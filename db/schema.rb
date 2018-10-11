@@ -10,9 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2018_10_11_011704) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "user_social_profiles", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "provier"
+    t.string "uuid"
+    t.string "name"
+    t.string "image_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_social_profiles_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "image_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "user_social_profiles", "users"
 end
