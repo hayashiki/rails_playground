@@ -3,10 +3,11 @@
 # Table name: user_social_profiles
 #
 #  id         :bigint(8)        not null, primary key
+#  email      :string
 #  image_url  :string
 #  name       :string
-#  provier    :string
-#  uuid       :string
+#  provider   :string
+#  uid        :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  user_id    :bigint(8)
@@ -22,4 +23,17 @@
 
 class UserSocialProfile < ApplicationRecord
   belongs_to :user
+
+  def self.find_or_initialize_from_omniauth(omniauth:)
+    social_profile = find_or_initialize_by(
+      provider: omniauth[:provider],
+      uid: omniauth[:uid]
+    )
+    social_profile.assign_attributes(
+      name: omniauth[:info][:name],
+      email: omniauth[:info][:email],
+      image_url: omniauth[:info][:image]
+    )
+    social_profile    
+  end
 end

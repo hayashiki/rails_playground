@@ -17,9 +17,10 @@ ActiveRecord::Schema.define(version: 2018_10_11_011704) do
 
   create_table "user_social_profiles", force: :cascade do |t|
     t.bigint "user_id"
-    t.string "provier"
-    t.string "uuid"
+    t.string "provider"
+    t.string "uid"
     t.string "name"
+    t.string "email"
     t.string "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

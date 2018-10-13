@@ -18,7 +18,8 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'awesome_print'
-  gem 'factory_bot'
+  gem 'factory_bot_rails'
+  gem 'faker'
   gem 'pry-awesome_print'
   gem 'pry-byebug'
   gem 'pry-doc'
@@ -32,6 +33,7 @@ group :development, :test do
   gem "guard"
   gem "guard-rspec"
   gem "database_cleaner"
+  gem "webmock"
 end
 
 group :development do
@@ -39,7 +41,6 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'faker'
   gem 'annotate'
   gem 'better_errors'
   gem 'bullet'
