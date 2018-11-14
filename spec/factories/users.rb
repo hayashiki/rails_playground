@@ -2,17 +2,21 @@
 #
 # Table name: users
 #
-#  id         :integer          not null, primary key
-#  name       :string           not null
-#  email      :string           not null
-#  image_url  :string           not null
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id                     :bigint(8)        not null, primary key
+#  email                  :string           default(""), not null
+#  encrypted_password     :string           default(""), not null
+#  image_url              :string
+#  name                   :string
+#  remember_created_at    :datetime
+#  reset_password_sent_at :datetime
+#  reset_password_token   :string
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
 #
 # Indexes
 #
-#  index_users_on_email  (email) UNIQUE
-#  index_users_on_name   (name) UNIQUE
+#  index_users_on_email                 (email) UNIQUE
+#  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 
 FactoryBot.define do
